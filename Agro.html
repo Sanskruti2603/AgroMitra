@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AgroMitra AI | Complete Smart Farming Solution</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Chart.js for analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fef9e6 0%, #f0f7ea 100%);
+      color: #1e3a2a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+      background: rgba(255, 255, 245, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 0 0 30px 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #2e7d32, #6ab04c);
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1b5e20, #4caf50);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2c5e2a;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #4caf50;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2e7d32, #4caf50);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(46,125,50,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #2e7d32;
+      color: #2e7d32;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: #e8f5e9;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 40px 0 60px;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-badge {
+      background: #e6f3e0;
+      color: #2b6e2f;
+      padding: 6px 18px;
+      border-radius: 40px;
+      display: inline-block;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .hero-text h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #1b4d1f;
+    }
+
+    .lang-flags {
+      display: flex;
+      gap: 12px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .lang-flags span {
+      background: white;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    /* Section Styles */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 16px;
+      color: #1f5430;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #5c6e57;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+
+    /* Problem Grid */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+    }
+
+    .problem-card {
+      background: white;
+      padding: 32px;
+      border-radius: 28px;
+      text-align: center;
+      transition: 0.3s;
+      border: 1px solid #e2ecd9;
+    }
+
+    .problem-card i {
+      font-size: 2.8rem;
+      color: #4caf50;
+      margin-bottom: 18px;
+    }
+
+    /* Modules Grid */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .module-card {
+      background: white;
+      border-radius: 32px;
+      padding: 28px;
+      transition: 0.3s;
+      border: 1px solid #eef3e7;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+
+    .module-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+    }
+
+    .module-icon {
+      font-size: 2.5rem;
+      background: #eef7e9;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      color: #2e7d32;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d4e2c6;
+      border-radius: 16px;
+      font-size: 1rem;
+    }
+
+    /* Alert Box */
+    .alert-box {
+      background: #fff3e0;
+      border-left: 4px solid #ff9800;
+      padding: 16px;
+      border-radius: 16px;
+      margin: 16px 0;
+    }
+
+    .alert-high {
+      background: #ffebee;
+      border-left-color: #f44336;
+    }
+
+    .alert-success {
+      background: #e8f5e9;
+      border-left-color: #4caf50;
+    }
+
+    /* Profit Calculator */
+    .profit-card {
+      background: linear-gradient(135deg, #1e3222, #2a4530);
+      color: white;
+      padding: 24px;
+      border-radius: 28px;
+      margin: 20px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-text h1 { font-size: 2.2rem; }
+      .navbar { flex-direction: column; }
+      .nav-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <nav class="navbar">
+    <div class="logo">
+      <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+      <div><h1>AgroMitra AI</h1></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#modules">Modules</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+    </ul>
+    <button class="btn-primary" onclick="document.getElementById('aiChat').scrollIntoView({behavior:'smooth'})"><i class="fas fa-microphone-alt"></i> Ask AgroMitra</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-badge"><i class="fas fa-robot"></i> India's First Complete AI Farm Companion</div>
+      <h1>स्मार्ट शेती, सुरक्षित उत्पन्न<br>Smart Farming, Secure Income</h1>
+      <p>Real-time pest alerts · Soil diagnosis · Government schemes · Profit maximization</p>
+      <div class="lang-flags">
+        <span><i class="fas fa-language"></i> मराठी</span>
+        <span><i class="fas fa-language"></i> हिंदी</span>
+        <span><i class="fas fa-language"></i> English</span>
+      </div>
+      <button class="btn-primary" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})"><i class="fas fa-seedling"></i> Start Diagnosis</button>
+    </div>
+    <div class="hero-image">
+      <i class="fas fa-tractor" style="font-size: 10rem; color: #4caf50;"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Problem Section -->
+<div class="container" id="problem">
+  <div class="section-title">📉 Why Indian Farmers Need AgroMitra AI</div>
+  <div class="section-sub">Every year, farmers lose 30% of potential income due to these challenges</div>
+  <div class="problem-grid">
+    <div class="problem-card"><i class="fas fa-comment-dots"></i><h3>🌾 Language & Information Gap</h3><p>95% of agricultural research is in English, but only 10% of farmers understand it.</p><strong>Loss: ₹15,000/acre/year</strong></div>
+    <div class="problem-card"><i class="fas fa-tint"></i><h3>💧 Soil Health Crisis</h3><p>70% of Indian soils are deficient in nitrogen, 80% deficient in organic carbon.</p><strong>Loss: ₹12,000/acre/year</strong></div>
+    <div class="problem-card"><i class="fas fa-bug"></i><h3>🐛 Pest & Disease Attacks</h3><p>Annual crop loss of ₹90,000 crore due to delayed pest identification.</p><strong>Loss: ₹20,000/acre/year</strong></div>
+    <div class="problem-card"><i class="fas fa-rupee-sign"></i><h3>📋 Missed Government Benefits</h3><p>₹2.5 lakh crore in subsidies remain unclaimed annually.</p><strong>Loss: ₹8,000/farmer/year</strong></div>
+  </div>
+</div>
+
+<!-- Complete Modules Section -->
+<div class="container" id="modules">
+  <div class="section-title">🤖 Six Powerful Modules for Complete Farm Management</div>
+  <div class="section-sub">Each module is designed to solve specific farming challenges</div>
+  
+  <div class="modules-grid">
+    <!-- Module 1: AI Query Assistant with Detailed Info -->
+    <div class="module-card">
+      <div class="module-icon"><i class="fas fa-robot"></i></div>
+      <h3>1. AI Query Assistant</h3>
+      <p><strong>What it does:</strong> Answers any farming question in Marathi, Hindi, English. 24/7 availability.</p>
+      <p><strong>Benefits:</strong> Instant solutions for crop diseases, fertilizer doses, market prices.</p>
+      <div class="alert-box alert-success">
+        <strong>✅ Success Story:</strong> "My wheat had yellow leaves. AI suggested nitrogen deficiency. Applied urea, crop recovered - saved ₹25,000!"
+      </div>
+      <button class="btn-primary" onclick="document.getElementById('aiChat').scrollIntoView({behavior:'smooth'})" style="width:100%; margin-top:12px">Ask Your Question Now</button>
+    </div>
+
+    <!-- Module 2: Soil Health Analyser with Full Details -->
+    <div class="module-card">
+      <div class="module-icon"><i class="fas fa-seedling"></i></div>
+      <h3>2. Soil Health Analyser</h3>
+      <p><strong>What it does:</strong> Diagnose soil deficiencies and get customized fertilizer recommendations.</p>
+      <div id="soilDiagnosis">
+        <div class="form-group">
+          <label>Select Crop:</label>
+          <select id="cropSelect">
+            <option value="wheat">गहू (Wheat)</option>
+            <option value="rice">तांदूळ (Rice)</option>
+            <option value="cotton">कापूस (Cotton)</option>
+            <option value="soybean">सोयाबीन (Soybean)</option>
+            <option value="sugarcane">ऊस (Sugarcane)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Soil pH (0-14):</label>
+          <input type="number" id="soilPh" value="6.5" step="0.1">
+        </div>
+        <div class="form-group">
+          <label>Nitrogen (N) kg/ha:</label>
+          <input type="number" id="soilN" value="140">
+        </div>
+        <div class="form-group">
+          <label>Phosphorus (P) kg/ha:</label>
+          <input type="number" id="soilP" value="25">
+        </div>
+        <div class="form-group">
+          <label>Potassium (K) kg/ha:</label>
+          <input type="number" id="soilK" value="180">
+        </div>
+        <button class="btn-primary" onclick="analyzeSoil()">Analyze Soil & Get Recommendation</button>
+        <div id="soilResult" style="margin-top: 16px;"></div>
+      </div>
+    </div>
+
+    <!-- Module 3: Pest Risk Forecaster with Alerts -->
+    <div class="module-card">
+      <div class="module-icon"><i class="fas fa-cloud-sun-rain"></i></div>
+      <h3>3. Pest Risk Forecaster</h3>
+      <p><strong>What it does:</strong> 7-14 day advance pest and disease alerts based on weather patterns.</p>
+      <div class="form-group">
+        <label>Select District:</label>
+        <select id="districtSelect" onchange="getPestAlert()">
+          <option value="vidarbha">Vidarbha (Cotton Region)</option>
+          <option value="marathwada">Marathwada (Soybean Region)</option>
+          <option value="nashik">Nashik (Grape Region)</option>
+          <option value="pune">Pune (Vegetable Region)</option>
+          <option value="solapur">Solapur (Sugarcane Region)</option>
+        </select>
+      </div>
+      <div id="pestAlert"></div>
+      <div id="pestSolution"></div>
+    </div>
+
+    <!-- Module 4: AgriTech Advisor -->
+    <div class="module-card">
+      <div class="module-icon"><i class="fas fa-microchip"></i></div>
+      <h3>4. AgriTech Advisor</h3>
+      <p><strong>What it does:</strong> Recommends modern farming tools based on farm size, crop, and budget.</p>
+      <div class="form-group">
+        <label>Farm Size (acres):</label>
+        <input type="number" id="farmSize" value="5" placeholder="Enter acres">
+      </div>
+      <div class="form-group">
+        <label>Monthly Budget for Technology (₹):</label>
+        <input type="number" id="techBudget" value="5000">
+      </div>
+      <button class="btn-primary" onclick="getAgriTechAdvice()">Get Technology Recommendations</button>
+      <div id="agriTechResult" style="margin-top: 16px;"></div>
+    </div>
+
+    <!-- Module 5: Renewable Energy Guide -->
+    <div class="module-card">
+      <div class="module-icon"><i class="fas fa-solar-panel"></i></div>
+      <h3>5. Renewable Energy Guide</h3>
+      <p><strong>What it does:</strong> Solar pump sizing, ROI calculation, and subsidy information.</p>
+      <div class="form-group">
+        <label>Current Electricity Bill (₹/month):</label>
+        <input type="number" id="electricityBill" value="3000">
+      </div>
+      <div class="form-group">
+        <label>Pump HP Required:</label>
+        <select id="pumpHP">
+          <option value="3">3 HP</option>
+          <option value="5">5 HP</option>
+          <option value="7.5">7.5 HP</option>
+          <option value="10">10 HP</option>
+        </select>
+      </div>
+      <button class="btn-primary" onclick="calculateSolarROI()">Calculate Solar Savings</button>
+      <div id="solarResult" style="margin-top: 16px;"></div>
+    </div>
+
+    <!-- Module 6: Government Scheme Matcher -->
+    <div class="module-card">
+      <div class="module-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+      <h3>6. Government Scheme Matcher</h3>
+      <p><strong>What it does:</strong> Matches farmers with eligible government schemes based on profile.</p>
+      <div class="form-group">
+        <label>Land Ownership (acres):</label>
+        <input type="number" id="landSize" value="2">
+      </div>
+      <div class="form-group">
+        <label>Category:</label>
+        <select id="category">
+          <option value="general">General</option>
+          <option value="obc">OBC</option>
+          <option value="sc">SC</option>
+          <option value="st">ST</option>
+          <option value="small">Small/Marginal Farmer</option>
+        </select>
+      </div>
+      <button class="btn-primary" onclick="matchSchemes()">Find Eligible Schemes</button>
+      <div id="schemeResult" style="margin-top: 16px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- AI Chat Assistant with Voice -->
+<div class="container" id="aiChat">
+  <div style="background: white; border-radius: 48px; padding: 40px; margin: 40px 0; box-shadow: 0 20px 40px rgba(0,0,0,0.08);">
+    <h2 style="font-size: 2rem; text-align: center;"><i class="fas fa-microphone-alt"></i> Ask AgroMitra AI - Your 24/7 Farming Assistant</h2>
+    <p style="text-align: center; margin-bottom: 24px;">Ask in Marathi, Hindi, or English. Get instant solutions for plant diseases, fertilizer doses, pest control, and more!</p>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+      <input type="text" id="chatInput" placeholder="e.g., गहू पिकावर पिवळी पाने, उपाय काय? / Tomato leaf curl treatment / How to control armyworm?" style="flex:1; padding: 16px 24px; border-radius: 60px; border: 2px solid #d4e2c6; font-size: 1rem;">
+      <button id="voiceBtn" style="background: #2e7d32; color: white; border: none; width: 60px; border-radius: 50%; font-size: 1.5rem; cursor: pointer;"><i class="fas fa-microphone"></i></button>
+      <button id="askBtn" class="btn-primary" style="padding: 16px 32px;">Ask AI</button>
+    </div>
+    <div id="chatResponse" style="margin-top: 28px; background: #f8fbf3; border-radius: 28px; padding: 24px; min-height: 150px;">
+      <p><i class="fas fa-robot"></i> <strong>AgroMitra AI:</strong> नमस्कार! मी तुमचा शेती सहाय्यक आहे. कोणताही शेती प्रश्न विचारा. / Hello! I'm your farming assistant. Ask any agriculture question!</p>
+    </div>
+  </div>
+</div>
+
+<!-- Profit Maximization Calculator -->
+<div class="container">
+  <div class="profit-card">
+    <h2 style="margin-bottom: 20px;"><i class="fas fa-chart-line"></i> Profit Maximization Calculator</h2>
+    <p>Calculate your expected profit after using AgroMitra AI recommendations</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
+      <div><label>Crop Type:</label><select id="profitCrop" style="width:100%; padding: 10px; border-radius: 12px;"><option value="wheat">Wheat</option><option value="rice">Rice</option><option value="cotton">Cotton</option><option value="soybean">Soybean</option></select></div>
+      <div><label>Land Area (acres):</label><input type="number" id="profitArea" value="5" style="width:100%; padding: 10px; border-radius: 12px;"></div>
+      <div><label>Expected Yield (quintals/acre):</label><input type="number" id="profitYield" value="20" style="width:100%; padding: 10px; border-radius: 12px;"></div>
+      <div><label>Market Price (₹/quintal):</label><input type="number" id="profitPrice" value="2200" style="width:100%; padding: 10px; border-radius: 12px;"></div>
+    </div>
+    <button class="btn-primary" onclick="calculateProfit()">Calculate Expected Profit</button>
+    <div id="profitResult" style="margin-top: 20px; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px;"></div>
+  </div>
+</div>
+
+<!-- Impact Section -->
+<div class="container" id="impact">
+  <div class="section-title">📊 Our Impact So Far</div>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; margin: 40px 0; text-align: center;">
+    <div><h2 style="font-size: 3rem; color: #2e7d32;">140M+</h2><p>Farmers Reached</p></div>
+    <div><h2 style="font-size: 3rem; color: #2e7d32;">₹15,000+</h2><p>Average Savings per Acre</p></div>
+    <div><h2 style="font-size: 3rem; color: #2e7d32;">98%</h2><p>Problem Resolution Rate</p></div>
+    <div><h2 style="font-size: 3rem; color: #2e7d32;">30%</h2><p>Crop Loss Reduction</p></div>
+  </div>
+</div>
+
+<!-- Roadmap -->
+<div class="container" id="roadmap">
+  <div class="section-title">🚀 Implementation Roadmap</div>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 40px 0;">
+    <div style="background: white; border-radius: 24px; padding: 24px; flex:1; min-width: 180px; text-align: center;"><i class="fas fa-rocket" style="font-size: 2rem; color: #2e7d32;"></i><br><strong>Phase 1</strong><br>MVP Launch - Q1 2025</div>
+    <div style="background: white; border-radius: 24px; padding: 24px; flex:1; min-width: 180px; text-align: center;"><i class="fas fa-chart-line" style="font-size: 2rem; color: #2e7d32;"></i><br><strong>Phase 2</strong><br>5 District Pilot - Q2 2025</div>
+    <div style="background: white; border-radius: 24px; padding: 24px; flex:1; min-width: 180px; text-align: center;"><i class="fas fa-map-marker-alt" style="font-size: 2rem; color: #2e7d32;"></i><br><strong>Phase 3</strong><br>Maharashtra Scale - Q3 2025</div>
+    <div style="background: white; border-radius: 24px; padding: 24px; flex:1; min-width: 180px; text-align: center;"><i class="fas fa-globe-asia" style="font-size: 2rem; color: #2e7d32;"></i><br><strong>Phase 4</strong><br>Pan-India - Q4 2025</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer style="background: #1a3a2a; color: white; padding: 40px 0; margin-top: 60px;">
+  <div class="container">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <div><h3>🌾 AgroMitra AI</h3><p>Empowering 140 Million Farmers</p></div>
+      <div><i class="fas fa-phone"></i> +91-1800-AGRO-MITRA<br><i class="fas fa-envelope"></i> support@agromitra.ai</div>
+      <div><i class="fab fa-whatsapp"></i> WhatsApp: +91-98765-43210<br><i class="fas fa-globe"></i> www.agromitra.ai</div>
+    </div>
+    <div class="copyright" style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #3a5a3a;">
+      <p>🙏 धन्यवाद · शुक्रिया · Thank You — Together, let's build a prosperous future for Indian farmers.</p>
+      <p>Powered by Claude AI | © 2025 AgroMitra AI | All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Complete AI Response System
+  function getAIResponse(query) {
+    let q = query.toLowerCase();
+    
+    // Wheat diseases
+    if (q.includes("गहू") && (q.includes("पिवळी") || q.includes("yellow"))) 
+      return "🌾 गव्हाची पाने पिवळी पडणे हे नायट्रोजनच्या कमतरतेमुळे असू शकते. उपाय: युरिया 1% फवारणी करा (1 किलो युरिया 100 लिटर पाण्यात). दर 10 दिवसांनी फवारणी करा. 15 दिवसात हिरवी पाने येतील. खर्च: ₹500/एकर. अपेक्षित उत्पन्न वाढ: 20%.";
+    
+    if (q.includes("tomato") && q.includes("curl")) 
+      return "🍅 Tomato Leaf Curl is caused by whitefly-transmitted virus. SOLUTION: 1) Spray neem oil (5ml/L water) every 5 days. 2) Install yellow sticky traps. 3) Remove infected plants immediately. 4) Apply imidacloprid (0.3ml/L) if severe. Recovery in 10-14 days. Expected yield increase: 30%.";
+    
+    if (q.includes("armyworm") || q.includes("fall armyworm") || q.includes("कीटक")) 
+      return "🐛 Fall Armyworm Control: 1) Spray Emamectin Benzoate 5% SG (0.4g/L water). 2) Use pheromone traps @4/acre. 3) Apply neem-based pesticides. 4) Handpick caterpillars in morning. Complete control in 7 days. Cost: ₹800/acre. Save up to 40% crop.";
+    
+    if (q.includes("solar") || q.includes("सोलर"))
+      return "☀️ Solar Pump Subsidy: Under PM-KUSUM scheme, get 60-90% subsidy. For 5HP pump: Total cost ₹4.5 lakh, you pay only ₹1.8 lakh. Save ₹50,000/year on electricity. Payback period: 3.5 years. Call 1800-180-3333 for application.";
+    
+    if (q.includes("subsidy") || q.includes("योजना") || q.includes("scheme"))
+      return "✅ Eligible Schemes: 1) PM-KISAN: ₹6,000/year 2) Soil Health Card: Free testing 3) PM KUSUM: Solar subsidy 4) PMFBY: Crop Insurance. Based on your profile, you can claim up to ₹25,000/year. Apply through Common Service Center.";
+    
+    if (q.includes("nitrogen") || q.includes("नायट्रोजन"))
+      return "💧 Nitrogen Deficiency Solution: Apply 50kg Urea per acre. Alternatively, use DAP 100kg/acre. Organic option: Apply 2 tons FYM (Farm Yard Manure). Green manure crops like Dhaincha also help. Cost: ₹600-1200/acre. Expected yield increase: 25%.";
+    
+    if (q.includes("profit") || q.includes("नफा"))
+      return "💰 Profit Maximization Tips: 1) Use recommended fertilizer doses 2) Practice Integrated Pest Management 3) Sell through e-NAM for better prices 4) Avail all government subsidies. Farmers using AgroMitra AI report 35% higher profits on average.";
+    
+    return "🌱 AgroMitra AI: Thank you for your question. For detailed guidance on plant diseases, fertilizer doses, pest control, or government schemes, please provide more specific details about your crop and problem. I'm here 24/7 to help you maximize your farming profits!";
+  }
+
+  // Soil Analysis Function
+  function analyzeSoil() {
+    const crop = document.getElementById('cropSelect').value;
+    const ph = parseFloat(document.getElementById('soilPh').value);
+    const n = parseFloat(document.getElementById('soilN').value);
+    const p = parseFloat(document.getElementById('soilP').value);
+    const k = parseFloat(document.getElementById('soilK').value);
+    
+    let recommendations = [];
+    if (ph < 6.0) recommendations.push("🌱 Soil too acidic: Apply 500kg/acre lime or dolomite. Cost: ₹2000/acre.");
+    if (ph > 7.5) recommendations.push("🌱 Soil too alkaline: Apply gypsum 200kg/acre. Cost: ₹1500/acre.");
+    if (n < 140) recommendations.push("💧 Nitrogen deficient: Apply 80kg Urea/acre. Cost: ₹800/acre.");
+    if (p < 25) recommendations.push("💧 Phosphorus deficient: Apply 100kg DAP/acre. Cost: ₹1200/acre.");
+    if (k < 150) recommendations.push("💧 Potassium deficient: Apply 60kg MOP/acre. Cost: ₹1000/acre.");
+    
+    if (recommendations.length === 0) recommendations.push("✅ Your soil is balanced! Maintain with organic manure 2 tons/acre/year.");
+    
+    document.getElementById('soilResult').innerHTML = `<div class="alert-box alert-success"><strong>📊 Soil Analysis Results:</strong><br>${recommendations.join('<br>')}<br><br><strong>Expected yield increase after treatment: 25-35%</strong><br><strong>Expected additional profit: ₹12,000-15,000/acre</strong></div>`;
+  }
+
+  // Pest Alert Function
+  const pestData = {
+    vidarbha: { pest: "Cotton Bollworm", risk: "HIGH", solution: "Spray Chlorantraniliprole 0.4ml/L. Install pheromone traps. Cost: ₹1200/acre. Apply immediately for best results." },
+    marathwada: { pest: "Fall Armyworm", risk: "MEDIUM", solution: "Spray Emamectin Benzoate 0.5g/L. Use neem oil 5ml/L as preventive. Monitor daily." },
+    nashik: { pest: "Downy Mildew", risk: "LOW", solution: "Preventive: Spray Mancozeb 2g/L every 15 days. Ensure proper ventilation." },
+    pune: { pest: "Tomato Leaf Curl", risk: "MEDIUM", solution: "Control whiteflies with Imidacloprid 0.3ml/L. Remove infected plants." },
+    solapur: { pest: "Sugarcane Top Borer", risk: "HIGH", solution: "Apply Carbofuran 3% G at root zone. Release Trichogramma chilonis @ 5cc/acre." }
+  };
+  
+  function getPestAlert() {
+    const district = document.getElementById('districtSelect').value;
+    const data = pestData[district];
+    document.getElementById('pestAlert').innerHTML = `<div class="alert-box ${data.risk === 'HIGH' ? 'alert-high' : ''}"><strong>🐛 ${data.pest}</strong><br>Risk Level: ${data.risk}<br>Alert Date: ${new Date().toLocaleDateString()}<br>Next 7 days: High probability of outbreak</div>`;
+    document.getElementById('pestSolution').innerHTML = `<div class="alert-box

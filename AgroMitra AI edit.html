@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AgroMitra AI | Complete Smart Farming Solution</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fef9e6 0%, #e8f5e9 100%);
+      color: #1e3a2a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+      background: rgba(255, 255, 245, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 0 0 30px 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #2e7d32, #6ab04c);
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1b5e20, #4caf50);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2c5e2a;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #4caf50;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2e7d32, #4caf50);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 2px 8px rgba(46,125,50,0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(46,125,50,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #2e7d32;
+      color: #2e7d32;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: #e8f5e9;
+      transform: scale(1.02);
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 40px 0 60px;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-badge {
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 6px 18px;
+      border-radius: 40px;
+      display: inline-block;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #1b4d1f;
+    }
+
+    .lang-flags {
+      display: flex;
+      gap: 12px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .lang-flags span {
+      background: white;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .lang-flags span:hover {
+      background: #4caf50;
+      color: white;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 40px;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 16px;
+      color: #1f5430;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #5c6e57;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+
+    /* Problem Grid */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+    }
+
+    .problem-card {
+      background: white;
+      padding: 32px;
+      border-radius: 28px;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: 1px solid #e2ecd9;
+    }
+
+    .problem-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+    }
+
+    .problem-card i {
+      font-size: 2.8rem;
+      color: #4caf50;
+      margin-bottom: 18px;
+    }
+
+    /* Modules Grid */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .module-card {
+      background: white;
+      border-radius: 32px;
+      padding: 28px;
+      transition: all 0.3s;
+      border: 1px solid #eef3e7;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+
+    .module-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+    }
+
+    .module-icon {
+      font-size: 2.5rem;
+      background: #eef7e9;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      color: #2e7d32;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d4e2c6;
+      border-radius: 16px;
+      font-size: 1rem;
+    }
+
+    /* Alert Boxes */
+    .alert-box {
+      background: #fff3e0;
+      border-left: 4px solid #ff9800;
+      padding: 16px;
+      border-radius: 16px;
+      margin: 16px 0;
+    }
+
+    .alert-high {
+      background: #ffebee;
+      border-left-color: #f44336;
+    }
+
+    .alert-success {
+      background: #e8f5e9;
+      border-left-color: #4caf50;
+    }
+
+    /* Voice Input Group */
+    .voice-input-group {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .voice-input-group input {
+      flex: 1;
+      padding: 14px 20px;
+      border-radius: 60px;
+      border: 2px solid #c8e6c9;
+      font-size: 1rem;
+    }
+
+    .mic-btn {
+      background: #2e7d32;
+      color: white;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .mic-btn.recording {
+      background: #d32f2f;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211,47,47,0.5); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(211,47,47,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211,47,47,0); }
+    }
+
+    /* Result Card */
+    .result-card {
+      background: #f8fbf3;
+      border-radius: 24px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    /* Impact Stats */
+    .impact-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 60px;
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .stat-block h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #2e7d32;
+    }
+
+    /* Roadmap */
+    .roadmap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .phase {
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      flex: 1;
+      min-width: 170px;
+      text-align: center;
+      border: 1px solid #e2ecd9;
+    }
+
+    /* Footer */
+    footer {
+      background: #1a3a2a;
+      color: #eef5e3;
+      padding: 50px 0 30px;
+      margin-top: 60px;
+      border-radius: 50px 50px 0 0;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 { font-size: 2rem; }
+      .navbar { flex-direction: column; }
+      .section-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <nav class="navbar">
+    <div class="logo">
+      <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+      <div><h1>AgroMitra AI</h1></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#modules">Modules</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#aiChat">AI Assistant</a></li>
+    </ul>
+    <button class="btn-primary" onclick="openGlobalAssistant()"><i class="fas fa-microphone-alt"></i> Voice Assistant</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-badge"><i class="fas fa-robot"></i> Powered by AI · Free for Farmers</div>
+      <h1>स्मार्ट शेती,<br>भरपूर उत्पन्न</h1>
+      <p>Real-time pest alerts · Soil diagnosis · Government schemes · Voice Assistant in Marathi/Hindi/English</p>
+      <div class="lang-flags">
+        <span onclick="setLanguage('marathi')"><i class="fas fa-language"></i> मराठी</span>
+        <span onclick="setLanguage('hindi')"><i class="fas fa-language"></i> हिंदी</span>
+        <span onclick="setLanguage('english')"><i class="fas fa-language"></i> English</span>
+      </div>
+      <button class="btn-primary" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})"><i class="fas fa-seedling"></i> Explore Modules</button>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1592982537447-6f2a6a0c7c18?w=500&h=400&fit=crop" alt="Indian Farmer" onerror="this.src='https://placehold.co/500x400/2e7d32/white?text=🌾+AgroMitra+AI'">
+    </div>
+  </div>
+</div>
+
+<!-- Problem Section -->
+<div class="container" id="problem">
+  <div class="section-title">📉 Critical Challenges</div>
+  <div class="section-sub">Every year, farmers lose 30% of potential income</div>
+  <div class="problem-grid">
+    <div class="problem-card" onclick="askQuickQuery('गहू पिकावर पिवळी पाने का येतात?')">
+      <i class="fas fa-comment-dots"></i>
+      <h3>🌾 Language Barrier</h3>
+      <p>95% agri-research in English, only 10% understand</p>
+      <strong>Click to Ask →</strong>
+    </div>
+    <div class="problem-card" onclick="askQuickQuery('माझ्या शेतातील मातीची गुणवत्ता कशी सुधारावी?')">
+      <i class="fas fa-tint"></i>
+      <h3>💧 Soil Degradation</h3>
+      <p>70% soils nitrogen deficient</p>
+      <strong>Click to Ask →</strong>
+    </div>
+    <div class="problem-card" onclick="askQuickQuery('कीटक नियंत्रणासाठी काय करावे?')">
+      <i class="fas fa-bug"></i>
+      <h3>🐛 Pest Attacks</h3>
+      <p>20-30% crop loss annually</p>
+      <strong>Click to Ask →</strong>
+    </div>
+    <div class="problem-card" onclick="askQuickQuery('मला कोणत्या सरकारी योजनांचा लाभ मिळू शकतो?')">
+      <i class="fas fa-rupee-sign"></i>
+      <h3>📋 Missed Subsidies</h3>
+      <p>₹2.5 lakh crore unclaimed</p>
+      <strong>Click to Ask →</strong>
+    </div>
+  </div>
+</div>
+
+<!-- Modules Section with Working Voice Input on Each -->
+<div class="container" id="modules">
+  <div class="section-title">🤖 Six Powerful Modules</div>
+  <div class="section-sub">Click on any module to get instant AI assistance</div>
+  
+  <div class="modules-grid">
+    <!-- Module 1: AI Query Assistant -->
+    <div class="module-card">
+      <div class="module-icon"><i class="fas fa-robot"></i></div>
+      <h3>1. AI Query Assistant</h3>
+      <p>Ask any farming question in your language</p>
+      <div class="voice-input-group">
+        <input type="text" id="query1" placeholder="e.g., गहू पिकासाठी खत कधी द्यावे?">
+        <button class="mic-btn" onclick="startVoiceInput('query1')"><i class="fas fa-microphone"></i></button>
+      </div>
+      <button class="btn-primary" onclick="askModuleQuery('query1', 'result1')" style="width:100%; margin-top:8px">Ask AI</button>
+      <div id="result1" class="result-card"></div>
+    </div>
+
+    <!-- Module 2: Soil Health Analyser -->
+    <div class="module-card">
+      <div class="module-icon"><i class="fas fa-seedling"></i></div>
+      <h3>2. Soil Health Analyser</h3>
+      <p>Get personalized fertilizer recommendations</p>
+      <div class="form-group">
+        <label>Crop Type:</label>
+        <select id="soilCrop">
+          <option value="wheat">गहू (Wheat)</option>
+          <option value="rice">तांदूळ (Rice)</option>
+          <option value="cotton">कापूस (Cotton)</option>
+          <option value="soybean">सोयाबीन (Soybean)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Soil pH:</label>
+        <input type="number" id="soilPh" value="6.5" step="0.1">
+      </div>
+      <div class="form-group">
+        <label>Nitrogen (N) kg/ha:</label>
+        <input type="number" id="soilN" value="140">
+      </div>
+      <div class="voice-input-group">
+        <input type="text" id="soilQuery" placeholder="Ask about soil...">
+        <button class="mic-btn" onclick="startVoiceInput('soilQuery')"><i class="fas fa-microphone"></i></button>
+      </div>
+      <button class="btn-primary" onclick="analyzeSoil()" style="width:100%; margin-top:8px">Analyze Soil</button>
+      <button class="btn-outline" onclick="askSoilQuestion()" style="width:100%; margin-top:8px">Ask Soil Question</button>
+      <div id="soilResult" class="result-card"></div>
+    </div>
+
+    <!-- Module 3: Pest Risk Forecaster -->
+    <div class="module-card">
+      <div class="module-icon"><i class="fas fa-cloud-sun-rain"></i></div>
+      <h3>3. Pest Risk Forecaster</h3>
+      <p>7-14 day advance pest alerts</p>
+      <div class="form-group">
+        <label>Select District:</label>
+        <select id="districtSelect">
+          <option value="vidarbha">Vidarbha (Cotton)</option>
+          <option value="marathwada">Marathwada (Soybean)</option>
+          <option value="nashik">Nashik (Grape)</option>
+          <option value="pune">Pune (Vegetables)</option>
+        </select>
+      </div>
+      <div class="voice-input-group">
+        <input type="text" id="pestQuery" placeholder="Ask about pests...">
+        <button class="mic-btn" onclick="startVoiceInput('pestQuery')"><i class="fas fa-microphone"></i></button>
+      </div>
+      <button class="btn-primary" onclick="getPestAlert()" style="width:100%; margin-top:8px">Get Pest Alert</button>
+      <button class="btn-outline" onclick="askPestQuestion()" style="width:100%; margin-top:8px">Ask Pest Question</button>
+      <div id="pestResult" class="result-card"></div>
+    </div>
+
+    <!-- Module 4: AgriTech Advisor -->
+    <div class="module-card">
+      <div class="module-icon"><i class="fas fa-microchip"></i></div>
+      <h3>4. AgriTech Advisor</h3>
+      <p>Modern farming technology recommendations</p>
+      <div class="form-group">
+        <label>Farm Size (acres):</label>
+        <input type="number" id="farmSize" value="5">
+      </div>
+      <div class="voice-input-group">
+        <input type="text" id="techQuery" placeholder="Ask about farm technology...">
+        <button class="mic-btn" onclick="startVoiceInput('techQuery')"><i class="fas fa-microphone"></i></button>
+      </div>
+      <button class="btn-primary" onclick="getAgriTechAdvice()" style="width:100%; margin-top:8px">Get Recommendations</button>
+      <div id="techResult" class="result-card"></div>
+    </div>
+
+    <!-- Module 5: Renewable Energy Guide -->
+    <div class="module-card">
+      <div class="module-icon"><i class="fas fa-solar-panel"></i></div>
+      <h3>5. Renewable Energy Guide</h3>
+      <p>Solar pump ROI & subsidy calculator</p>
+      <div class="form-group">
+        <label>Monthly Electricity Bill (₹):</label>
+        <input type="number" id="electricBill" value="3000">
+      </div>
+      <div class="voice-input-group">
+        <input type="text" id="energyQuery" placeholder="Ask about solar...">
+        <button class="mic-btn" onclick="startVoiceInput('energyQuery')"><i class="fas fa-microphone"></i></button>
+      </div>
+      <button class="btn-primary" onclick="calculateSolar()" style="width:100%; margin-top:8px">Calculate Savings</button>
+      <div id="energyResult" class="result-card"></div>
+    </div>
+
+    <!-- Module 6: Government Scheme Matcher -->
+    <div class="module-card">
+      <div class="module-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+      <h3>6. Government Scheme Matcher</h3>
+      <p>Find eligible subsidies and schemes</p>
+      <div class="form-group">
+        <label>Land Size (acres):</label>
+        <input type="number" id="landSize" value="2">
+      </div>
+      <div class="form-group">
+        <label>Category:</label>
+        <select id="farmerCategory">
+          <option value="general">General</option>
+          <option value="sc">SC/ST</option>
+          <option value="obc">OBC</option>
+          <option value="small">Small/Marginal</option>
+        </select>
+      </div>
+      <div class="voice-input-group">
+        <input type="text" id="schemeQuery" placeholder="Ask about schemes...">
+        <button class="mic-btn" onclick="startVoiceInput('schemeQuery')"><i class="fas fa-microphone"></i></button>
+      </div>
+      <button class="btn-primary" onclick="matchSchemes()" style="width:100%; margin-top:8px">Find Schemes</button>
+      <div id="schemeResult" class="result-card"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Global AI Chat Assistant -->
+<div class="container" id="aiChat">
+  <div style="background: linear-gradient(135deg, white, #f8fbf3); border-radius: 48px; padding: 40px; margin: 40px 0; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+    <h2 style="font-size: 2rem; text-align: center;"><i class="fas fa-microphone-alt" style="color: #2e7d32;"></i> AgroMitra AI Assistant</h2>
+    <p style="text-align: center; margin-bottom: 24px;">Ask in मराठी, हिंदी, or English. Voice supported!</p>
+    <div class="voice-input-group">
+      <input type="text" id="globalQuery" placeholder="e.g., गहू पिवळी पाने उपाय / Tomato leaf curl treatment / सोलर सबसिडी">
+      <button class="mic-btn" id="globalMicBtn"><i class="fas fa-microphone"></i></button>
+      <button class="btn-primary" id="globalAskBtn">Ask AI</button>
+    </div>
+    <div id="globalResponse" class="result-card" style="min-height: 120px;">
+      <p><i class="fas fa-robot"></i> <strong>AgroMitra AI:</strong> नमस्कार! मी तुमचा शेती सहाय्यक आहे. कोणताही प्रश्न विचारा. / Hello! I'm your farming assistant. Ask any question!</p>
+    </div>
+  </div>
+</div>
+
+<!-- Impact Section -->
+<div class="container" id="impact">
+  <div class="section-title">🚀 Our Impact</div>
+  <div class="impact-stats">
+    <div class="stat-block"><h2>140M+</h2><p>Farmers Targeted</p></div>
+    <div class="stat-block"><h2>3+</h2><p>Languages Supported</p></div>
+    <div class="stat-block"><h2>₹2L Cr</h2><p>Subsidies Unlocked</p></div>
+    <div class="stat-block"><h2>35%</h2><p>Profit Increase</p></div>
+  </div>
+</div>
+
+<!-- Roadmap -->
+<div class="container" id="roadmap">
+  <div class="section-title">Implementation Roadmap</div>
+  <div class="roadmap">
+    <div class="phase"><strong>Phase 1</strong><br>MVP Launch<br>Q1 2025</div>
+    <div class="phase"><strong>Phase 2</strong><br>5 District Pilot<br>Q2 2025</div>
+    <div class="phase"><strong>Phase 3</strong><br>Maharashtra Scale<br>Q3 2025</div>
+    <div class="phase"><strong>Phase 4</strong><br>Pan-India<br>Q4 2025</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <h3>🌾 AgroMitra AI</h3>
+        <p>Empowering 140 Million Indian Farmers</p>
+        <p><i class="fas fa-globe"></i> www.agromitra.ai</p>
+      </div>
+      <div>
+        <p><i class="fas fa-phone"></i> +91-1800-AGRO-MITRA</p>
+        <p><i class="fab fa-whatsapp"></i> WhatsApp: +91-98765-43210</p>
+        <p><i class="fas fa-envelope"></i> support@agromitra.ai</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>🙏 धन्यवाद · शुक्रिया · Thank You — Building a prosperous future for Indian agriculture</p>
+      <p>Powered by Claude AI | © 2025 AgroMitra AI</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Comprehensive AI Response Database
+  function getSmartAIResponse(query) {
+    let q = query.toLowerCase();
+    
+    // Wheat相关问题
+    if (q.includes("गहू") && (q.includes("पिवळी") || q.includes("yellow"))) 
+      return "🌾 गव्हाची पाने पिवळी पडणे = नायट्रोजनची कमतरता. उपाय: युरिया 1% फवारणी (1kg प्रति 100L पाणी). 15 दिवसात सुधारणा. खर्च: ₹500/एकर. उत्पन्न वाढ: 25%";
+    
+    if (q.includes("गहू") && q.includes("खत")) 
+      return "🌾 गहू पिकासाठी खताचे प्रमाण: DAP 100kg/एकर, युरिया 80kg/एकर (2 विभागात), पोटाश 40kg/एकर. शेवटची फवारणी पिकाच्या 45 दिवसांनी करा.";
+    
+    // Tomato issues
+    if (q.includes("tomato") && q.includes("curl")) 
+      return "🍅 Tomato Leaf Curl: Caused by whitefly. Solution: Neem oil 5ml/L every 5 days + yellow sticky traps. Remove infected plants. Recovery in 14 days.";
+    
+    if (q.includes("टोमॅटो") && q.includes("पाने")) 
+      return "🍅 टोमॅटोची पाने कुरळणे = व्हायरस. उपाय: निंबोळी अर्क 5ml/L फवारणी, पिवळे सापळे लावा. संक्रमित झाडे काढून टाका.";
+    
+    // Pest control
+    if (q.includes("कीटक") || q.includes("armyworm") || q.includes("pest")) 
+      return "🐛 कीटक नियंत्रण: 1) निंबोळी अर्क 5ml/L फवारणी दर 10 दिवसांनी. 2) गंभीर असल्यास क्लोरेंट्रानिलिप्रोल 0.4ml/L. 3) फेरोमोन सापळे लावा. खर्च: ₹800/एकर. पीक बचत: 40%";
+    
+    // Fertilizer recommendations
+    if (q.includes("खत") || q.includes("fertilizer")) 
+      return "💧 शिफारस केलेले खत: माती तपासणीनुसार. सामान्यत: DAP 100kg, युरिया 80kg, पोटाश 40kg प्रति एकर. सेंद्रिय खत 2 टन प्रति एकर वापरा.";
+    
+    // Solar subsidy
+    if (q.includes("सोलर") || q.includes("solar") || q.includes("सबसिडी")) 
+      return "☀️ सोलर पंप सबसिडी: PM-KUSUM योजनेअंतर्गत 60-90% अनुदान. 5HP पंपासाठी एकूण खर्च ₹4.5 लाख, सबसिडीनंतर ₹1.8 लाख. दरवर्षी ₹50,000 वीज बचत. 3-4 वर्षांत परतावा.";
+    
+    // Government schemes
+    if (q.includes("योजना") || q.includes("scheme") || q.includes("subsidy")) 
+      return "✅ पात्र योजना: 1) PM-KISAN: ₹6,000/वर्ष 2) PMFBY: पीक विमा 3) सॉइल हेल्थ कार्ड: मोफत माती तपासणी 4) PM-KUSUM: सोलर सबसिडी 5) e-NAM: ऑनलाइन विक्री व्यासपीठ. अधिक माहितीसाठी जवळच्या CSC केंद्राशी संपर्क साधा.";
+    
+    // Soil health
+    if (q.includes("माती") || q.includes("soil")) 
+      return "🌱 माती सुधारणा: सेंद्रिय खत 2-3 टन प्रति एकर वापरा. हिरवळीचे खत (धैंचा) लावा. माती तपासणी करून कमतरता भरून काढा. शेंगायुक्त पिकांची आंतरपीक पद्धत वापरा.";
+    
+    // Profit
+    if (q.includes("नफा") || q.includes("profit")) 
+      return "💰 नफा वाढवण्यासाठी: 1) योग्य खत व्यवस्थापन 2) कीटक नियंत्रण 3) e-NAM वर विक्री 4) सरकारी योजनांचा लाभ. AgroMitra AI वापरणाऱ्या शेतकऱ्यांचा नफा 35% वाढला आहे.";
+    
+    return "🌱 AgroMitra AI: तुमच्या प्रश्नासाठी तज्ञ सल्ला हवा असल्यास अधिक तपशील द्या. मी मराठी, हिंदी, इंग्रजीत मदत करतो. कृपया पुन्हा विचारा!";
+  }
+
+  // Global Voice Recognition Setup
+  let currentRecognition = null;
+  
+  function startVoiceInput(inputId) {
+    if (!('webkitSpeechRecognition' in window)) {
+      alert("Voice recognition not supported. Please use Chrome or Edge browser.");
+      return;
+    }
+    
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'hi-IN';
+    recognition.interimResults = false;
+    
+    const micBtn = event.target;
+    micBtn.classList.add('recording');
+    
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      document.getElementById(inputId).value = transcript;
+      micBtn.classList.remove('recording');
+    };
+    
+    recognition.onerror = () => {
+      micBtn.classList.remove('recording');
+      alert("Could not hear you. Please try again.");
+    };
+    
+    recognition.onend = () => {
+      micBtn.classList.remove('recording');
+    };
+    
+    recognition.start();
+  }
+  
+  // Module query functions
+  function askModuleQuery(inputId, resultId) {
+    const query = document.getElementById(inputId).value;
+    if (!query) {
+      document.getElementById(resultId).innerHTML = '<div class="alert-box">⚠️ कृपया प्रश्न टाइप करा किंवा माय
