@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --color-brand-light: #f0f7ea;
+  --color-brand-subtle: #e6f3e0;
+  --color-brand: #4caf50;
+  --color-brand-dark: #2e7d32;
+  --color-brand-darker: #1b4d1f;
+  --color-card-bg: rgba(255, 255, 255, 0.95);
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-gradient-to-br from-[#fef9e6] to-[#f0f7ea] text-[#1e3a2a] antialiased leading-relaxed;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-br from-brand-dark to-brand text-white font-semibold py-3 px-7 rounded-full shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-dark/30 active:translate-y-0 cursor-pointer;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border-2 border-brand-dark text-brand-dark font-semibold py-2.5 px-6 rounded-full transition-colors duration-300 hover:bg-brand-subtle cursor-pointer;
+  }
+
+  .glass-panel {
+    @apply bg-card-bg backdrop-blur-md border border-white/50 shadow-lg rounded-3xl;
+  }
+  
+  .input-field {
+    @apply w-full p-3 bg-white border border-[#d4e2c6] rounded-2xl text-base focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all;
+  }
+
+  .label {
+    @apply block mb-2 font-semibold text-brand-darker;
+  }
+}
