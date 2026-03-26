@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" fill="none">
+  <!-- Sky background -->
+  <rect width="500" height="420" fill="#f0f7ea" rx="24"/>
+
+  <!-- Sun -->
+  <circle cx="420" cy="70" r="45" fill="#FFD700" opacity="0.25"/>
+  <circle cx="420" cy="70" r="32" fill="#FFD700" opacity="0.5"/>
+  <circle cx="420" cy="70" r="22" fill="#FFC107"/>
+
+  <!-- Sun rays -->
+  <g stroke="#FFC107" stroke-width="2.5" stroke-linecap="round" opacity="0.7">
+    <line x1="420" y1="30" x2="420" y2="18"/>
+    <line x1="420" y1="110" x2="420" y2="122"/>
+    <line x1="380" y1="70" x2="368" y2="70"/>
+    <line x1="460" y1="70" x2="472" y2="70"/>
+    <line x1="392" y1="42" x2="384" y2="34"/>
+    <line x1="448" y1="98" x2="456" y2="106"/>
+    <line x1="448" y1="42" x2="456" y2="34"/>
+    <line x1="392" y1="98" x2="384" y2="106"/>
+  </g>
+
+  <!-- Clouds -->
+  <g opacity="0.7">
+    <ellipse cx="100" cy="60" rx="50" ry="22" fill="white"/>
+    <ellipse cx="130" cy="50" rx="38" ry="20" fill="white"/>
+    <ellipse cx="75" cy="55" rx="30" ry="18" fill="white"/>
+  </g>
+  <g opacity="0.5">
+    <ellipse cx="280" cy="45" rx="40" ry="18" fill="white"/>
+    <ellipse cx="305" cy="37" rx="30" ry="16" fill="white"/>
+    <ellipse cx="260" cy="42" rx="25" ry="14" fill="white"/>
+  </g>
+
+  <!-- Ground / Field -->
+  <ellipse cx="250" cy="370" rx="260" ry="60" fill="#c8e6c9" opacity="0.5"/>
+  <rect x="0" y="310" width="500" height="110" fill="#4caf50" rx="0"/>
+  <rect x="0" y="330" width="500" height="90" fill="#388e3c"/>
+  <rect x="0" y="355" width="500" height="65" fill="#2e7d32"/>
+
+  <!-- Field rows (crop lines) -->
+  <g stroke="#1b5e20" stroke-width="1.5" opacity="0.4">
+    <line x1="0" y1="345" x2="500" y2="345"/>
+    <line x1="0" y1="360" x2="500" y2="360"/>
+    <line x1="0" y1="375" x2="500" y2="375"/>
+    <line x1="0" y1="390" x2="500" y2="390"/>
+  </g>
+
+  <!-- Wheat stalks left -->
+  <g stroke="#8BC34A" stroke-width="2.5" stroke-linecap="round">
+    <line x1="40" y1="310" x2="40" y2="260"/>
+    <line x1="60" y1="310" x2="60" y2="255"/>
+    <line x1="80" y1="310" x2="80" y2="262"/>
+    <line x1="100" y1="310" x2="100" y2="258"/>
+    <line x1="120" y1="310" x2="120" y2="265"/>
+  </g>
+  <!-- Wheat heads -->
+  <g fill="#FFC107">
+    <ellipse cx="40" cy="255" rx="5" ry="10"/>
+    <ellipse cx="60" cy="250" rx="5" ry="10"/>
+    <ellipse cx="80" cy="257" rx="5" ry="10"/>
+    <ellipse cx="100" cy="253" rx="5" ry="10"/>
+    <ellipse cx="120" cy="260" rx="5" ry="10"/>
+  </g>
+
+  <!-- Wheat stalks right -->
+  <g stroke="#8BC34A" stroke-width="2.5" stroke-linecap="round">
+    <line x1="370" y1="310" x2="370" y2="260"/>
+    <line x1="390" y1="310" x2="390" y2="255"/>
+    <line x1="410" y1="310" x2="410" y2="262"/>
+    <line x1="430" y1="310" x2="430" y2="258"/>
+    <line x1="450" y1="310" x2="450" y2="265"/>
+  </g>
+  <g fill="#FFC107">
+    <ellipse cx="370" cy="255" rx="5" ry="10"/>
+    <ellipse cx="390" cy="250" rx="5" ry="10"/>
+    <ellipse cx="410" cy="257" rx="5" ry="10"/>
+    <ellipse cx="430" cy="253" rx="5" ry="10"/>
+    <ellipse cx="450" cy="260" rx="5" ry="10"/>
+  </g>
+
+  <!-- TRACTOR BODY -->
+  <!-- Main body -->
+  <rect x="170" y="240" width="160" height="75" rx="12" fill="#2e7d32"/>
+  <!-- Cab -->
+  <rect x="255" y="200" width="80" height="55" rx="10" fill="#1b5e20"/>
+  <!-- Cab window -->
+  <rect x="263" y="208" width="62" height="35" rx="7" fill="#b3e5fc" opacity="0.85"/>
+  <!-- Window shine -->
+  <line x1="268" y1="212" x2="268" y2="238" stroke="white" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Exhaust pipe -->
+  <rect x="248" y="185" width="8" height="22" rx="4" fill="#555"/>
+  <ellipse cx="252" cy="183" rx="6" ry="4" fill="#777"/>
+  <!-- Smoke puffs -->
+  <circle cx="252" cy="170" r="7" fill="#ccc" opacity="0.5"/>
+  <circle cx="258" cy="158" r="5" fill="#ccc" opacity="0.35"/>
+  <circle cx="248" cy="148" r="4" fill="#ccc" opacity="0.2"/>
+
+  <!-- Hood -->
+  <rect x="170" y="225" width="90" height="30" rx="8" fill="#388e3c"/>
+
+  <!-- Big rear wheel -->
+  <circle cx="210" cy="320" r="52" fill="#333"/>
+  <circle cx="210" cy="320" r="44" fill="#555"/>
+  <circle cx="210" cy="320" r="36" fill="#333"/>
+  <circle cx="210" cy="320" r="14" fill="#888"/>
+  <!-- Wheel spokes -->
+  <g stroke="#777" stroke-width="3">
+    <line x1="210" y1="284" x2="210" y2="356"/>
+    <line x1="174" y1="320" x2="246" y2="320"/>
+    <line x1="185" y1="295" x2="235" y2="345"/>
+    <line x1="235" y1="295" x2="185" y2="345"/>
+  </g>
+  <!-- Tyre treads -->
+  <g stroke="#222" stroke-width="2" opacity="0.5">
+    <path d="M162 300 Q158 320 162 340" fill="none"/>
+    <path d="M258 300 Q262 320 258 340" fill="none"/>
+  </g>
+
+  <!-- Small front wheel -->
+  <circle cx="320" cy="315" r="30" fill="#333"/>
+  <circle cx="320" cy="315" r="24" fill="#555"/>
+  <circle cx="320" cy="315" r="18" fill="#333"/>
+  <circle cx="320" cy="315" r="8" fill="#888"/>
+  <g stroke="#777" stroke-width="2.5">
+    <line x1="320" y1="291" x2="320" y2="339"/>
+    <line x1="296" y1="315" x2="344" y2="315"/>
+    <line x1="303" y1="298" x2="337" y2="332"/>
+    <line x1="337" y1="298" x2="303" y2="332"/>
+  </g>
+
+  <!-- Axle connectors -->
+  <rect x="200" y="295" width="120" height="10" rx="5" fill="#1b5e20"/>
+
+  <!-- Headlight -->
+  <ellipse cx="175" cy="248" rx="9" ry="7" fill="#FFF9C4"/>
+  <ellipse cx="175" cy="248" rx="6" ry="4.5" fill="#FFF176"/>
+
+  <!-- Farmer in cab (silhouette) -->
+  <circle cx="285" cy="218" r="10" fill="#5D4037"/>
+  <rect x="278" y="226" width="14" height="14" rx="4" fill="#5D4037"/>
+  <!-- Farmer hat -->
+  <ellipse cx="285" cy="210" rx="13" ry="5" fill="#4E342E"/>
+  <rect x="279" y="205" width="12" height="7" rx="3" fill="#4E342E"/>
+
+  <!-- AI signal / wifi from tractor -->
+  <g stroke="#4caf50" stroke-width="2" fill="none" opacity="0.8" stroke-linecap="round">
+    <path d="M345 195 Q360 180 375 195"/>
+    <path d="M338 188 Q360 168 382 188"/>
+    <path d="M331 181 Q360 156 389 181"/>
+  </g>
+  <circle cx="360" cy="200" r="4" fill="#4caf50"/>
+
+  <!-- Soil sensor spike -->
+  <line x1="155" y1="290" x2="155" y2="320" stroke="#FF7043" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="155,320 148,308 162,308" fill="#FF7043"/>
+  <rect x="140" y="270" width="30" height="20" rx="5" fill="#FF7043"/>
+  <text x="155" y="284" text-anchor="middle" font-size="8" fill="white" font-family="Arial" font-weight="bold">NPK</text>
+
+  <!-- Data readout bubble -->
+  <rect x="60" y="200" width="100" height="52" rx="12" fill="white" stroke="#4caf50" stroke-width="2"/>
+  <polygon points="110,252 100,265 120,265" fill="white" stroke="#4caf50" stroke-width="2"/>
+  <polygon points="110,252 100,264 120,264" fill="white"/>
+  <text x="110" y="218" text-anchor="middle" font-size="9" fill="#2e7d32" font-family="Arial" font-weight="bold">Soil pH: 6.8 ✅</text>
+  <text x="110" y="232" text-anchor="middle" font-size="9" fill="#1565C0" font-family="Arial">N: 145 | P: 28</text>
+  <text x="110" y="246" text-anchor="middle" font-size="9" fill="#E65100" font-family="Arial">K: 160 kg/ha</text>
+
+  <!-- Drone top right -->
+  <g transform="translate(390, 140)">
+    <!-- Drone body -->
+    <rect x="-18" y="-8" width="36" height="16" rx="8" fill="#37474F"/>
+    <circle cx="0" cy="0" r="6" fill="#546E7A"/>
+    <circle cx="0" cy="0" r="3" fill="#4caf50"/>
+    <!-- Arms -->
+    <line x1="-18" y1="-8" x2="-32" y2="-18" stroke="#37474F" stroke-width="3"/>
+    <line x1="18" y1="-8" x2="32" y2="-18" stroke="#37474F" stroke-width="3"/>
+    <line x1="-18" y1="8" x2="-32" y2="18" stroke="#37474F" stroke-width="3"/>
+    <line x1="18" y1="8" x2="32" y2="18" stroke="#37474F" stroke-width="3"/>
+    <!-- Propellers -->
+    <ellipse cx="-32" cy="-18" rx="12" ry="3" fill="#90A4AE" opacity="0.7"/>
+    <ellipse cx="32" cy="-18" rx="12" ry="3" fill="#90A4AE" opacity="0.7"/>
+    <ellipse cx="-32" cy="18" rx="12" ry="3" fill="#90A4AE" opacity="0.7"/>
+    <ellipse cx="32" cy="18" rx="12" ry="3" fill="#90A4AE" opacity="0.7"/>
+    <!-- Camera -->
+    <rect x="-5" y="8" width="10" height="8" rx="3" fill="#263238"/>
+    <circle cx="0" cy="12" r="3" fill="#1565C0"/>
+  </g>
+  <!-- Drone dotted path -->
+  <path d="M390 165 Q370 200 340 210" stroke="#4caf50" stroke-width="1.5" stroke-dasharray="5,4" fill="none" opacity="0.6"/>
+
+  <!-- AgroMitra AI label -->
+  <rect x="155" y="148" width="150" height="36" rx="18" fill="#2e7d32"/>
+  <text x="230" y="171" text-anchor="middle" font-size="14" fill="white" font-family="Arial" font-weight="bold">🌱 AgroMitra AI</text>
+</svg>
