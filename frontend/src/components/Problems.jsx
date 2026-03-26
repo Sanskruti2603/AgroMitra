@@ -1,91 +1,65 @@
 import React from 'react';
-import { MessageSquareOff, Droplets, BugOff, FileQuestion } from 'lucide-react';
+import { MessageSquareOff, Droplets, BugOff, FileQuestion, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLang } from '../LanguageContext';
+import t from '../translations';
 
-const problems = [
-    {
-        icon: <MessageSquareOff size={40} />,
-        title: "Language & Info Gap",
-        desc: "95% of agricultural research is in English, but only 10% of farmers understand it.",
-        loss: "₹15,000/acre/year",
-        color: "text-blue-500",
-        bg: "bg-blue-50"
-    },
-    {
-        icon: <Droplets size={40} />,
-        title: "Soil Health Crisis",
-        desc: "70% of Indian soils are deficient in nitrogen, 80% deficient in organic carbon.",
-        loss: "₹12,000/acre/year",
-        color: "text-amber-600",
-        bg: "bg-amber-50"
-    },
-    {
-        icon: <BugOff size={40} />,
-        title: "Pest & Disease Attacks",
-        desc: "Annual crop loss of ₹90,000 crore due to delayed pest identification.",
-        loss: "₹20,000/acre/year",
-        color: "text-red-500",
-        bg: "bg-red-50"
-    },
-    {
-        icon: <FileQuestion size={40} />,
-        title: "Missed Gov Benefits",
-        desc: "₹2.5 lakh crore in subsidies remain unclaimed annually.",
-        loss: "₹8,000/farmer/year",
-        color: "text-purple-500",
-        bg: "bg-purple-50"
-    }
+const icons = [
+    { icon: <MessageSquareOff size={36} />, color: 'text-blue-600', bg: 'bg-blue-50', border: 'border-blue-200', solutionColor: 'text-blue-700 bg-blue-50 border-blue-200' },
+    { icon: <Droplets size={36} />,         color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200', solutionColor: 'text-amber-700 bg-amber-50 border-amber-200' },
+    { icon: <BugOff size={36} />,           color: 'text-red-500',   bg: 'bg-red-50',   border: 'border-red-200',   solutionColor: 'text-red-700 bg-red-50 border-red-200' },
+    { icon: <FileQuestion size={36} />,     color: 'text-purple-600',bg: 'bg-purple-50',border: 'border-purple-200',solutionColor: 'text-purple-700 bg-purple-50 border-purple-200' },
 ];
 
-const container = {
-    hidden: { opacity: 0 },
-    show: {
-        opacity: 1,
-        transition: { staggerChildren: 0.1 }
-    }
-};
-
-const item = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
-};
+const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.1 } } };
+const item      = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } } };
 
 const Problems = () => {
+    const { lang } = useLang();
+    const tx = t[lang].problems;
+
     return (
-        <section id="problem" className="py-20 scroll-mt-20">
-            <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-extrabold text-brand-darker mb-4">
-                    📉 Why Indian Farmers Need AgroMitra AI
-                </h2>
-                <p className="text-xl text-[#5c6e57] max-w-2xl mx-auto font-medium">
-                    Every year, farmers lose 30% of potential income due to these critical challenges
-                </p>
+        <section id="problem" className="py-20 scroll-mt-24">
+            <div className="text-center mb-14">
+                <span className="inline-block bg-red-50 text-red-600 text-sm font-bold px-5 py-2 rounded-full mb-4 border border-red-200">
+                    {tx.sectionBadge}
+                </span>
+                <h2 className="text-4xl md:text-5xl font-extrabold text-brand-darker mb-4">{tx.heading}</h2>
+                <p className="text-xl text-[#5c6e57] max-w-2xl mx-auto font-medium">{tx.sub}</p>
             </div>
 
-            <motion.div
-                variants={container}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-100px" }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-            >
-                {problems.map((prob, idx) => (
-                    <motion.div
-                        key={idx}
-                        variants={item}
-                        className="glass-panel p-8 text-center group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden"
-                    >
-                        <div className={`absolute top-0 left-0 w-full h-1 ${prob.bg} group-hover:h-full transition-all duration-500 -z-10 opacity-50`}></div>
-                        <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl ${prob.bg} ${prob.color} mb-6 shadow-sm group-hover:scale-110 transition-transform`}>
-                            {prob.icon}
+            <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {tx.items.map((prob, idx) => (
+                    <motion.div key={idx} variants={item}
+                        className={`glass-panel p-7 flex flex-col group hover:-translate-y-2 transition-transform duration-300 border-2 ${icons[idx].border}`}>
+                        <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${icons[idx].bg} ${icons[idx].color} mb-5 shadow-sm group-hover:scale-110 transition-transform`}>
+                            {icons[idx].icon}
                         </div>
-                        <h3 className="text-xl font-bold text-brand-darker mb-3">{prob.title}</h3>
-                        <p className="text-[#4a5c46] mb-6 min-h-[80px]">{prob.desc}</p>
-                        <div className="inline-block bg-red-50 text-red-700 px-4 py-2 rounded-lg font-bold text-sm tracking-wide border border-red-100">
-                            Loss: {prob.loss}
+                        <h3 className="text-lg font-bold text-brand-darker mb-2">{prob.title}</h3>
+                        <p className="text-[#4a5c46] text-sm mb-5 flex-grow leading-relaxed">{prob.desc}</p>
+                        <div className="inline-block bg-red-50 text-red-700 px-3 py-1.5 rounded-lg font-bold text-xs border border-red-100 mb-4">
+                            💸 {prob.loss}
+                        </div>
+                        <div className={`flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg border ${icons[idx].solutionColor}`}>
+                            <ArrowRight size={13} className="shrink-0" /> {prob.solution}
                         </div>
                     </motion.div>
                 ))}
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                className="mt-12 bg-gradient-to-r from-brand-subtle to-[#f0f7ea] border border-brand/20 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <p className="text-2xl font-extrabold text-brand-darker mb-1">
+                        {tx.totalLoss} <span className="text-red-600">₹55,000+/acre/year</span>
+                    </p>
+                    <p className="text-[#5c6e57] font-medium">{tx.totalSub}</p>
+                </div>
+                <button onClick={() => document.getElementById('modules')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="btn-primary flex items-center gap-2 whitespace-nowrap">
+                    {tx.seeBtn} <ArrowRight size={18} />
+                </button>
             </motion.div>
         </section>
     );
